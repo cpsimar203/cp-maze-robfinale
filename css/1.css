@@ -1,0 +1,382 @@
+/* main.css */
+@font-face {
+    font-family: 'Burbank Big Condensed Black';
+    src: url('../fonts/BurbankBigCondensedBlack.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply Fredoka to all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #87CEFA, #f0f0f0); /* Light blue sky gradient */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-top: 100px; /* Adjusted margin to start lower on the page */
+}
+
+.logo {
+    width: 100px; /* Adjust the size of the logo as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px; /* Add bottom margin for spacing */
+}
+
+h1, h2 {
+    color: white;
+    text-align: center;
+    -webkit-text-stroke: 5px black; /* Adjust stroke thickness */
+}
+h2 {
+	margin-bottom: 20px;
+}
+.fix-stroke {
+    paint-order: stroke fill;
+}
+
+#username {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#generate {
+    display: block;
+    margin: 20px auto 60px; /* Add more bottom margin for spacing */
+    padding: 5px 10px;
+    border: 2px solid #478F17;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #a8e063, #56ab2f); /* Lighter gradient green */
+    color: white;
+    font-size: 18px; /* Adjust font size */
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-bottom: 6px solid #3e8e41; /* Double thick border at the bottom */
+    -webkit-text-stroke: 3.5px black;
+    transition: border-bottom-width 0.3s, border-bottom-color 0.3s; /* Adding transition */
+}
+
+#generate:active {
+    border-bottom-width: 2px; /* Reduce border width on hover and active states */
+    border-bottom-color: #478F17; /* Change border color on hover and active states */
+}
+
+.card-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: visible;
+    margin-top: 20px; /* Maintain spacing between cards and button */
+    padding-bottom: 100px;
+}
+
+.circle {
+    display: none;
+    position: absolute;
+    top: -15px;
+    right: -25px;
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    background: linear-gradient(to bottom, #ABEE3C, #71EF15);
+    border-radius: 50%; /* Make it a circle */
+    z-index: 1; /* Ensure it's above the cards */
+    border: 6px solid black;
+}
+
+.card {
+    position: relative;
+    width: 140px;
+    background-color: transparent;
+    border-radius: 8px;
+    overflow: visible;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    cursor: pointer; /* Add cursor pointer to indicate clickability */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.card-content h3 {
+    font-size: 18px; /* Adjust font size */
+    margin-bottom: 0; /* Remove margin to prevent extra space */
+    padding: 0%;
+    
+}
+
+.warning {
+    font-size: 16px;
+    color: red;
+}
+
+/* New styles for the blank screen content */
+#blank-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87CEFA, #f0f0f0);
+    z-index: 999;
+}
+
+#blank-screen .content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#blank-screen .white-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    height: 40%; /* Set height explicitly */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center align content vertically */
+    align-items: center; /* Center align content horizontally */
+    position: relative; /* Make sure the position is relative for absolute positioning */
+    z-index: 2;
+}
+
+#blank-screen .white-box .logo {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translateX(-50%); /* Center the logo horizontally */
+    width: 100px; /* Adjust the size of the logo as needed */
+    height: auto;
+}
+
+.verify-button {
+    display: block;
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 0px;
+    padding: 5px 10px;
+    background-color: #FE9D43;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    position: absolute;
+    bottom: 60px;
+    animation: pulse 2s infinite;
+  }
+  
+  
+.verify-button:hover {
+    background-color: #FE9D43; /* Darker green on hover */
+    transform: scale(0.95); /* Scale up slightly on hover */
+}
+
+.verify-button:active {
+    background-color: #FE9D43; /* Darker green on hover */
+    transform: scale(0.95); /* Scale up slightly on hover */
+}
+
+.loading-circles {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.loading-circle {
+    width: 18px; /* Smaller circle size */
+    height: 18px; /* Smaller circle size */
+    border-radius: 50%;
+    background-color: #E8E8E8;
+    margin: 0 5px; /* Reduced margin between circles */
+}
+
+
+.bounce {
+    animation: bounce 0.3s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+.loading-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.typing {
+    animation: typing 2s steps(40, end) forwards; /* Adjust duration and steps as needed */
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.loading-text.typing {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(40, end) forwards; /* Adjust duration and steps as needed */
+}
+
+@keyframes blink {
+    0%, 50%{
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+
+}
+
+.blinking-dot {
+    animation: blink 1s infinite;
+}
+
+/* Add this to your existing CSS */
+
+#floating-images-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure it is behind other content */
+}
+
+.floating-image {
+    position: absolute;
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s; /* Smooth transformation for clicks */
+    opacity: 50%;
+}
+
+/* Styles for pop-up cards */
+#popup-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.popup-card {
+    display: none;
+    position: relative;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.popup-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.popup-card-content {
+    display: flex;
+    align-items: center;
+}
+
+.popup-card-content div {
+    margin-left: 10px;
+}
+
+.popup-card h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.popup-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.popup-text {
+    font-size: 1em;
+    color: #333;
+    margin-top: 0.5em;
+}
+
+@media screen and (max-width: 768px) {
+    .loading-text {
+        font-size: 22px; /* Adjust this for smaller screens */
+    }
+}
